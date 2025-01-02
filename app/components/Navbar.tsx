@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo Section */}
           <div className="text-white text-xl font-bold">
-            <Link href="/">Himanshu's Portfolio</Link>
+            <Link href="/">Himanshu&apos;s Portfolio</Link>
           </div>
 
           {/* Desktop Menu */}
