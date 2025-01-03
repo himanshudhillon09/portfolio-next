@@ -36,10 +36,13 @@ export default function Home() {
 
   return (
     <div className="min-w-full">
-      <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen  bg-violet-300 px-6">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-300 px-6">
+        <Navbar />
         {/* Intro Section */}
-        <section className="intro w-full flex flex-col mt-28 items-center justify-center mb-12">
+        <section
+          id="about"
+          className="intro w-full flex flex-col mt-28 items-center justify-center mb-12"
+        >
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +91,7 @@ export default function Home() {
         </section>
 
         {/* Skills Section */}
-        <section className="skills w-full mb-12">
+        <section id="skills" className="skills w-full mb-12">
           <motion.h2
             {...fadeIn}
             className="text-3xl font-semibold text-gray-800 mb-6 text-center"
@@ -145,7 +148,10 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section className="projects w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <section
+          id="projects"
+          className="projects w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+        >
           <motion.h2
             {...fadeIn}
             className="text-3xl font-semibold text-gray-800 col-span-full mb-6 text-center"
@@ -236,7 +242,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section className="contact w-full text-center mb-12">
+        <section id="contact" className="contact w-full text-center mb-12">
           <motion.h2
             {...fadeIn}
             className="text-3xl font-semibold text-gray-800 mb-6"
