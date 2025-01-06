@@ -5,18 +5,10 @@ import Link from "next/link";
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItemVariants = {
-    initial: { opacity: 0, y: -10 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.3 },
-  };
-
   return (
     <div className="flex justify-center mt-3 bg-slate-500 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
       {/* Navbar Container */}
       <div className="flex justify-center">
-        
-
         {/* Hamburger Icon */}
         <motion.button
           className="md:hidden flex flex-col justify-center items-center gap-1"

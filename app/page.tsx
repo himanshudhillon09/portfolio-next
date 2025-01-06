@@ -77,7 +77,7 @@ export default function Home() {
             className="text-4xl font-semibold text-center text-gray-800 mt-4"
           >
             Hello,
-            <br/> I&apos;m Himanshu Dhillon
+            <br /> I&apos;m Himanshu Dhillon
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 50 }}
