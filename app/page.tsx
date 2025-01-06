@@ -74,9 +74,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-semibold text-gray-800 mt-4"
+            className="text-4xl font-semibold text-center text-gray-800 mt-4"
           >
-            Hello, I&apos;m Himanshu Dhillon
+            Hello,
+            <br/> I&apos;m Himanshu Dhillon
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 50 }}
