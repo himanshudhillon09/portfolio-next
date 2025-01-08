@@ -3,7 +3,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase, faDownload } from '@fortawesome/free-solid-svg-icons';
 export default function Home() {
   // State to trigger the rotation on first load
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -53,7 +54,7 @@ export default function Home() {
             <motion.img
               src="mypic.jpg" // Add your image path here
               alt="Himanshu Dhillon"
-              className="rounded-full w-40 h-40 object-cover border-4 border-violet-500 shadow-xl"
+              className="rounded-2xl w-40 h-40 object-cover border-4 border-violet-800 shadow-xl"
               initial={{ opacity: 0, scale: 0 }} // Set scale to 0 initially, but opacity 0 makes it invisible at first
               animate={
                 hasLoaded
@@ -69,6 +70,19 @@ export default function Home() {
               onAnimationComplete={() => setHasLoaded(true)} // Ensures rotation happens once on load
             />
           </motion.div>
+          <div className="flex justify-center gap-6 mt-6">
+      {/* Hire Me! Button */}
+      <button className="flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition">
+        <FontAwesomeIcon icon={faBriefcase} className="mr-2" />
+        Hire Me!
+      </button>
+
+      {/* Download CV Button */}
+      <button className="flex items-center px-6 py-3 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition">
+        <FontAwesomeIcon icon={faDownload} className="mr-2" />
+        Download CV
+      </button>
+    </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
