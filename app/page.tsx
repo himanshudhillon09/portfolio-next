@@ -3,8 +3,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faDownload } from '@fortawesome/free-solid-svg-icons';
+import ContactForm from "./components/ContactForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBriefcase, faDownload } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
   // State to trigger the rotation on first load
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -37,7 +38,7 @@ export default function Home() {
 
   return (
     <div className="min-w-full">
-      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-300 px-6">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-800 px-6">
         <Navbar />
         {/* Intro Section */}
         <section
@@ -70,25 +71,25 @@ export default function Home() {
               onAnimationComplete={() => setHasLoaded(true)} // Ensures rotation happens once on load
             />
           </motion.div>
-          <div className="flex justify-center gap-6 mt-6">
-      {/* Hire Me! Button */}
-      <button className="flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition">
-        <FontAwesomeIcon icon={faBriefcase} className="mr-2" />
-        Hire Me!
-      </button>
+          <motion.div {...fadeIn} className="flex justify-center gap-6 mt-6">
+            {/* Hire Me! Button */}
+            <button className="flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition">
+              <FontAwesomeIcon icon={faBriefcase} className="mr-2" />
+              Hire Me!
+            </button>
 
-      {/* Download CV Button */}
-      <button className="flex items-center px-6 py-3 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition">
-        <FontAwesomeIcon icon={faDownload} className="mr-2" />
-        Download CV
-      </button>
-    </div>
+            {/* Download CV Button */}
+            <button className="flex items-center px-6 py-3 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition">
+              <FontAwesomeIcon icon={faDownload} className="mr-2" />
+              Download CV
+            </button>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-semibold text-center text-gray-800 mt-4"
+            className="text-4xl font-semibold text-center text-white mt-4"
           >
             Hello,
             <br /> I&apos;m Himanshu Dhillon
@@ -97,7 +98,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-lg text-gray-600 mt-4 text-center"
+            className="text-lg text-white mt-4 text-center"
           >
             I&apos;m a passionate software developer specializing in full-stack
             development, React.js, and Python. I love solving complex problems
@@ -109,7 +110,7 @@ export default function Home() {
         <section id="skills" className="skills w-full mb-12">
           <motion.h2
             {...fadeIn}
-            className="text-3xl font-semibold text-gray-800 mb-6 text-center"
+            className="text-3xl font-semibold text-white mb-6 text-center"
           >
             Skills
           </motion.h2>
@@ -169,7 +170,7 @@ export default function Home() {
         >
           <motion.h2
             {...fadeIn}
-            className="text-3xl font-semibold text-gray-800 col-span-full mb-6 text-center"
+            className="text-3xl font-semibold text-white col-span-full mb-6 text-center"
           >
             Projects
           </motion.h2>
@@ -260,18 +261,14 @@ export default function Home() {
         <section id="contact" className="contact w-full text-center mb-12">
           <motion.h2
             {...fadeIn}
-            className="text-3xl font-semibold text-gray-800 mb-6"
+            className="text-3xl font-semibold text-white mb-6"
           >
             Contact
           </motion.h2>
-          <motion.p {...fadeIn} className="text-lg text-gray-600">
-            Feel free to reach out to me at:
-          </motion.p>
-          <motion.p {...fadeIn} className="text-lg text-blue-600 mt-4">
-            <a href="mailto:himanshu.dhillon09@gmail.com">
-              himanshu.dhillon09@gmail.com
-            </a>
-          </motion.p>
+
+          <motion.div {...fadeIn} className="text-lg text-gray-600">
+            <ContactForm />
+          </motion.div>
         </section>
       </div>
     </div>

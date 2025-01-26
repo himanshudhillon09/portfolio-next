@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="flex justify-center mt-3 bg-slate-500 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
+    <div className="flex justify-center mt-3 bg-slate-200 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
       {/* Navbar Container */}
       <div className="flex justify-center">
         {/* Hamburger Icon */}
@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={index}
                 href={`#${item.toLowerCase()}`}
-                className="text-white hover:bg-yellow-400 rounded-3xl px-3 py-2 transition duration-200"
+                className="text-slate-900 hover:bg-yellow-400 rounded-3xl px-3 py-2 transition duration-200"
               >
                 {item}
               </Link>
