@@ -6,6 +6,11 @@ import Navbar from "./components/Navbar";
 import ContactForm from "./components/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase, faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 export default function Home() {
   // State to trigger the rotation on first load
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -71,6 +76,7 @@ export default function Home() {
               onAnimationComplete={() => setHasLoaded(true)} // Ensures rotation happens once on load
             />
           </motion.div>
+
           <motion.div {...fadeIn} className="flex justify-center gap-6 mt-6">
             {/* Hire Me! Button */}
             <button className="flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition">
@@ -83,6 +89,37 @@ export default function Home() {
               <FontAwesomeIcon icon={faDownload} className="mr-2" />
               Download CV
             </button>
+          </motion.div>
+          <motion.div {...fadeIn} className="flex justify-center gap-4 mt-6">
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/himanshu095"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-blue-100 rounded-full shadow-md hover:shadow-xl"
+            >
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </a>
+
+            {/* GitHub */}
+            <a
+              href="https://github.com/himanshudhillon09"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-900 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-gray-100 rounded-full shadow-md hover:shadow-xl"
+            >
+              <FontAwesomeIcon icon={faGithub} size="2x" />
+            </a>
+
+            {/* Twitter */}
+            <a
+              href="https://x.com/Himanshu0952"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-600 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-blue-100 rounded-full shadow-md hover:shadow-xl"
+            >
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </a>
           </motion.div>
 
           <motion.h1
