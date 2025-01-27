@@ -3,11 +3,26 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: [
-      'www.geckoboard.com',
-      'bitmovin.com',
-      'xdfile.com',
-      // Add any other domains here
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.geckoboard.com",
+        port: "",
+        pathname: "/**", // Match all paths
+      },
+      {
+        protocol: "https",
+        hostname: "bitmovin.com",
+        port: "",
+        pathname: "/**", // Match all paths
+      },
+      {
+        protocol: "https",
+        hostname: "xdfile.com",
+        port: "",
+        pathname: "/**", // Match all paths
+      },
+      // Add any other domains here with similar structure
     ],
   },
 };
