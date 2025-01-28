@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
+import Experience from "./components/Experience";
 import ContactForm from "./components/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase, faDownload } from "@fortawesome/free-solid-svg-icons";
@@ -294,6 +295,10 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* Experience Section */}
+        <section id="experience" className="experience w-full mb-12">
+          <Experience />
+        </section>
         {/* Contact Section */}
         <section id="contact" className="contact w-full text-center mb-12">
           <motion.h2
