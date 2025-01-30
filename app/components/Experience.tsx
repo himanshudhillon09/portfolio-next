@@ -46,14 +46,22 @@ export default function Experience() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 p-16 flex flex-col items-center">
-      <h1 className="text-4xl text-center mb-16 text-gray-800">Experience</h1>
+  const hoverEffect = {
+    scale: 1.05,
+    boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
+    transition: { duration: 0.3 },
+  };
 
-      {/* Floating Geometric Shapes */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+  return (
+    <div className="min-h-screen bg-slate-800 p-4 md:p-16 flex flex-col items-center">
+      <h1 className="text-3xl md:text-4xl text-center mb-8 md:mb-16 text-white font-bold">
+        Experience
+      </h1>
+
+      {/* Floating Geometric Shapes (Hidden on Mobile) */}
+      <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none z-0">
         <motion.div
-          className="absolute w-48 h-48 bg-yellow-300 rounded-full opacity-70 animate-pulse"
+          className="absolute w-24 h-24 md:w-48 md:h-48 bg-yellow-300 rounded-full opacity-70 animate-pulse"
           initial={{ left: "10%", top: "10%" }}
           animate={{
             left: ["10%", "90%"],
@@ -66,7 +74,7 @@ export default function Experience() {
           }}
         />
         <motion.div
-          className="absolute w-36 h-36 bg-blue-500 rounded-full opacity-50 animate-pulse"
+          className="absolute w-20 h-20 md:w-36 md:h-36 bg-blue-500 rounded-full opacity-50 animate-pulse"
           initial={{ left: "80%", top: "50%" }}
           animate={{
             left: ["80%", "20%"],
@@ -84,9 +92,7 @@ export default function Experience() {
         {experiences.map((experience, index) => (
           <div
             key={index}
-            className={`flex ${
-              index % 2 === 0 ? "justify-start" : "justify-end"
-            } items-center mb-32 relative`}
+            className="flex justify-center items-center mb-8 md:mb-16 relative"
           >
             {/* Experience Card */}
             <motion.div
@@ -94,25 +100,32 @@ export default function Experience() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeIn}
-              className="bg-white shadow-2xl rounded-3xl p-12 w-2/3 transform hover:scale-105 hover:shadow-2xl transition-all"
+              whileHover={hoverEffect}
+              className="bg-white shadow-lg md:shadow-2xl rounded-2xl md:rounded-3xl p-6 md:p-12 w-full md:w-2/3 transform transition-all cursor-pointer"
               style={{
-                borderLeft: "8px solid #3b82f6", // Add a left border for a modern look
+                borderLeft: "6px solid #3b82f6", // Thinner border on mobile
                 background: "rgba(255, 255, 255, 0.9)", // Slight transparency for modern effect
                 backdropFilter: "blur(10px)", // Glassmorphism effect
               }}
             >
-              <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+              <h2 className="text-xl md:text-3xl font-semibold text-gray-800 mb-2 md:mb-4">
                 {experience.role}
               </h2>
-              <p className="text-lg text-gray-600 font-medium">
+              <p className="text-base md:text-lg text-gray-600 font-medium">
                 {experience.company}
               </p>
-              <p className="text-sm text-gray-500 italic mb-6">
+              <p className="text-sm text-gray-500 italic mb-4 md:mb-6">
                 {experience.duration}
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-1 md:space-y-2 text-sm md:text-base text-gray-700">
                 {experience.description.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                  <motion.li
+                    key={idx}
+                    whileHover={{ scale: 1.02, color: "#3b82f6" }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item}
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>

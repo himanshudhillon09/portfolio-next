@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="flex justify-center mt-3 bg-slate-200 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
+    <div className="flex justify-center mt-3 bg-sky-400 md:bg-slate-200 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
       {/* Navbar Container */}
       <div className="flex justify-center">
         {/* Hamburger Icon */}
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
 
       {/* Full-Screen Mobile Menu */}
       <motion.div
-        className={`fixed inset-0 bg-slate-500 text-white flex flex-col items-center justify-center ${
+        className={`fixed inset-0 bg-sky-400 text-white flex flex-col items-center justify-center ${
           isMenuOpen ? "block" : "hidden"
         }`}
         initial={{ opacity: 0 }}
