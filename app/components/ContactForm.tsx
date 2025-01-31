@@ -8,23 +8,69 @@ const ContactForm: React.FC = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: string;
+    text: string;
+  } | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    alert("Thank you for reaching out! I'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+
+    // Prevent multiple submissions
+    if (loading) return;
+
+    setLoading(true);
+    setStatusMessage(null);
+
+    try {
+      const trimmedFormData = {
+        name: formData.name.trim(),
+        senderEmail: formData.email.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      };
+
+      // Basic client-side validation
+      if (
+        !trimmedFormData.senderEmail ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedFormData.senderEmail)
+      ) {
+        throw new Error("Please enter a valid email address.");
+      }
+      if (!trimmedFormData.message) {
+        throw new Error("Message cannot be empty.");
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(trimmedFormData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong.");
+      }
+
+      setStatusMessage({
+        type: "success",
+        text: "✅ Your message has been sent!",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error: any) {
+      setStatusMessage({ type: "error", text: `❌ ${error.message}` });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -32,6 +78,19 @@ const ContactForm: React.FC = () => {
       <h3 className="text-2xl font-semibold text-gray-800 mb-4">
         Get in Touch
       </h3>
+
+      {statusMessage && (
+        <div
+          className={`p-3 mb-4 rounded-md text-center ${
+            statusMessage.type === "success"
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {statusMessage.text}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Field */}
         <div>
@@ -85,7 +144,6 @@ const ContactForm: React.FC = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            required
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
@@ -113,9 +171,14 @@ const ContactForm: React.FC = () => {
         <div>
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition"
+            disabled={loading}
+            className={`w-full px-4 py-2 text-white font-semibold rounded-md shadow-md transition ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600 focus:ring-blue-400 focus:ring-offset-2"
+            }`}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>
