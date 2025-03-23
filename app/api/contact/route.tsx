@@ -78,9 +78,15 @@ export async function POST(req: NextRequest) {
       { message: "Emails sent successfully!" },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { message: `Failed to send emails: ${error.message}` },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
-      { message: `Failed to send emails: ${error.message}` },
+      { message: "An unknown error occurred" },
       { status: 500 }
     );
   }
