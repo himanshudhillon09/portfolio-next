@@ -58,54 +58,25 @@ export default function Experience() {
         Experience
       </h1>
 
-      {/* Floating Geometric Shapes (Hidden on Mobile) */}
-      <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-        <motion.div
-          className="absolute w-24 h-24 md:w-48 md:h-48 bg-yellow-300 rounded-full opacity-70 animate-pulse"
-          initial={{ left: "10%", top: "10%" }}
-          animate={{
-            left: ["10%", "90%"],
-            top: ["10%", "90%"],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 10,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute w-20 h-20 md:w-36 md:h-36 bg-blue-500 rounded-full opacity-50 animate-pulse"
-          initial={{ left: "80%", top: "50%" }}
-          animate={{
-            left: ["80%", "20%"],
-            top: ["50%", "10%"],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 12,
-            ease: "linear",
-          }}
-        />
-      </div>
-
-      <div className="relative w-full max-w-5xl z-10">
+      <div className="relative min-w-full p-4 max-w-2xl z-10">
         {experiences.map((experience, index) => (
           <div
             key={index}
-            className="flex justify-center items-center mb-8 md:mb-16 relative"
+            className={`flex items-center mb-8 md:mb-16 ${
+              index % 2 === 0 ? "md:justify-start" : "md:justify-end"
+            }`}
           >
-            {/* Experience Card */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeIn}
               whileHover={hoverEffect}
-              className="bg-white shadow-lg md:shadow-2xl rounded-2xl md:rounded-3xl p-6 md:p-12 w-full md:w-2/3 transform transition-all cursor-pointer"
+              className="bg-white shadow-lg md:shadow-2xl rounded-2xl md:rounded-3xl p-3 md:p-8 md:w-3/5 transform transition-all cursor-pointer"
               style={{
-                borderLeft: "6px solid #3b82f6", // Thinner border on mobile
-                background: "rgba(255, 255, 255, 0.9)", // Slight transparency for modern effect
-                backdropFilter: "blur(10px)", // Glassmorphism effect
+                borderLeft: "6px solid #3b82f6",
+                background: "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(10px)",
               }}
             >
               <h2 className="text-xl md:text-3xl font-semibold text-gray-800 mb-2 md:mb-4">
