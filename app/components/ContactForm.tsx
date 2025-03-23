@@ -81,8 +81,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 max-w-xl mx-auto">
-      <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+    <div className="bg-white shadow-md rounded-lg p-12 max-w-5xl mx-auto text-left">
+      <h3 className="text-3xl text-center font-semibold text-gray-800 mb-12">
         Get in Touch
       </h3>
 
