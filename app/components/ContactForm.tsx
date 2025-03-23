@@ -66,8 +66,15 @@ const ContactForm: React.FC = () => {
         text: "✅ Your message has been sent!",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error: any) {
-      setStatusMessage({ type: "error", text: `❌ ${error.message}` });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setStatusMessage({ type: "error", text: `❌ ${error.message}` });
+      } else {
+        setStatusMessage({
+          type: "error",
+          text: "❌ An unknown error occurred.",
+        });
+      }
     } finally {
       setLoading(false);
     }
