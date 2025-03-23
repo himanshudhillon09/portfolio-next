@@ -204,7 +204,7 @@ export default function Home() {
         {/* Projects Section */}
         <section
           id="projects"
-          className="projects w-3/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="projects grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
         >
           <motion.h2
             {...fadeIn}
@@ -296,7 +296,7 @@ export default function Home() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="experience w-3/5 mb-12">
+        <section id="experience" className="experience min-w-full mb-12">
           <Experience />
         </section>
         {/* Contact Section */}
@@ -308,7 +308,7 @@ export default function Home() {
             Contact Me
           </motion.h2>
 
-          <motion.div {...fadeIn} className="text-lg max-w-3/5 text-gray-600">
+          <motion.div {...fadeIn} className="text-lg text-gray-600">
             <ContactForm />
           </motion.div>
         </section>
