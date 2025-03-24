@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="flex justify-center mt-3 bg-sky-400 md:bg-slate-200 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
+    <div className="flex justify-center bg-sky-500 md:bg-slate-200 md:max-w-7xl rounded-3xl px-4 py-2 sm:px-6 z-50 lg:px-8">
       {/* Navbar Container */}
       <div className="flex justify-center">
         {/* Hamburger Icon */}
