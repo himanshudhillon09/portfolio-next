@@ -26,7 +26,7 @@ const Skills = () => {
     <div>
       <motion.h2
         {...fadeIn}
-        className="text-4xl font-semibold text-white mb-6 text-center"
+        className="text-4xl font-bold mb-6 text-center"
       >
         Skills
       </motion.h2>

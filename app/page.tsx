@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="min-w-full">
       {/* Hero Section  */}
-      <section className="flex flex-col items-center justify-center min-h-screen bg-blue-300">
+      <section className="flex flex-col items-center justify-center min-h-screen bg-teal-200">
         <Navbar />
         <HeroSection />
       </section>
@@ -19,7 +19,7 @@ export default function Home() {
       {/* Skills Section */}
       <section
         id="skills"
-        className="skills min-w-full min-h-screen p-12 bg-blue-800"
+        className="skills min-w-full min-h-screen p-12 bg-orange-100"
       >
         <Skills />
       </section>
@@ -39,7 +39,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="contact min-h-screen bg-cyan-500"
+        className="contact min-h-screen bg-teal-100"
       >
         <ContactForm />
       </section>

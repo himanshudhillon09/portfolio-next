@@ -6,7 +6,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react"; // ✅ Added useState import
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -25,15 +25,12 @@ const HeroSection = () => {
   return (
     <div>
       {/* Intro Section */}
-      <section
-        id="about"
-        className="intro w-full flex flex-col mt-28 items-center justify-center bg-blue-300 mb-12"
-      >
+      <section id="about" className="intro w-full flex flex-col mt-28  mb-12">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative mb-6"
+          className="relative flex justify-center mb-6"
         >
           {/* Professional Photo with Rotation on Page Load and Hover */}
           <motion.img
@@ -103,25 +100,36 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-semibold text-center mt-4"
+          className="text-4xl text-center font-light mt-4"
         >
           Hello,
         </motion.h1>
 
-        <span className="text-3xl font-semibold text-center mt-4">
-          I&apos;m Himanshu Dhillon
+        <span className="text-3xl font-light text-center mt-4">
+          I&apos;m <span className="font-bold"> Himanshu Dhillon </span>
         </span>
-
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-lg  mt-4 text-center"
-        >
-          I&apos;m a passionate software developer specializing in full-stack
-          development, React.js, and Python. I love solving complex problems and
-          building impactful software solutions.
-        </motion.p>
+        <div className="mt-4 p-4 max-w-6xl ml-14">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-cursive mt-12"
+          >
+            Professional Summary
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-lg mt-6 font-sans"
+          >
+            Enthusiastic Full Stack Developer with 1 year of experience in
+            building responsive web applications using React and Node.js.
+            Skilled in developing efficient APIs and ensuring seamless user
+            experiences. Quick learner with a strong focus on delivering
+            high-quality solutions.
+          </motion.p>
+        </div>
       </section>
     </div>
   );
