@@ -1,12 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase, faDownload } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Briefcase, Download, Github, Linkedin, Twitter } from "lucide-react";
+import myPic from "../../public/mypic.jpg";
 
 const HeroSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -15,120 +10,179 @@ const HeroSection = () => {
     setHasLoaded(true);
   }, []);
 
-  // Animation variants
-  const fadeIn = {
-    initial: { opacity: 0, y: 100 },
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.2 },
+    transition: { duration: 0.8, ease: "easeOut" },
   };
 
+  const fadeInLeft = {
+    initial: { opacity: 0, x: -60 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 0.8, ease: "easeOut" },
+  };
+
+  const staggerChildren = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const socialLinks = [
+    {
+      href: "https://www.linkedin.com/in/himanshu095",
+      icon: Linkedin,
+      color: "text-blue-600 hover:text-blue-700",
+      bg: "bg-blue-50 hover:bg-blue-100",
+    },
+    {
+      href: "https://github.com/himanshudhillon09",
+      icon: Github,
+      color: "text-gray-700 hover:text-gray-900",
+      bg: "bg-gray-50 hover:bg-gray-100",
+    },
+    {
+      href: "https://x.com/Himanshu0952",
+      icon: Twitter,
+      color: "text-blue-400 hover:text-blue-600",
+      bg: "bg-blue-50 hover:bg-blue-100",
+    },
+  ];
+
   return (
-    <div>
-      {/* Intro Section */}
-      <section id="about" className="intro w-full flex flex-col mt-28  mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative flex justify-center mb-6"
-        >
-          {/* Professional Photo with Rotation on Page Load and Hover */}
-          <motion.img
-            src="mypic.jpg" // Add your image path here
-            alt="Himanshu Dhillon"
-            className="rounded-2xl w-40 h-40 object-cover border-4 border-violet-800 shadow-xl"
-            initial={{ opacity: 0, scale: 0 }} // Set scale to 0 initially, but opacity 0 makes it invisible at first
-            animate={
-              hasLoaded
-                ? { opacity: 1, scale: 1, rotate: 360 }
-                : { opacity: 1, scale: 1, rotate: 0 }
-            } // Rotate on page load
-            transition={{ duration: 1, ease: "easeOut" }}
-            whileHover={{
-              scale: 1.1,
-              rotate: 15, // Adds a slight rotation on hover
-              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
-            }}
-          />
-        </motion.div>
-
-        <motion.div {...fadeIn} className="flex justify-center gap-6 mt-6">
-          {/* Hire Me! Button */}
-          <button className="flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition">
-            <FontAwesomeIcon icon={faBriefcase} className="mr-2" />
-            Hire Me!
-          </button>
-
-          {/* Download CV Button */}
-          <button className="flex items-center px-6 py-3 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition">
-            <FontAwesomeIcon icon={faDownload} className="mr-2" />
-            Download CV
-          </button>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div {...fadeIn} className="flex justify-center gap-4 mt-6">
-          <a
-            href="https://www.linkedin.com/in/himanshu095"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-blue-100 rounded-full shadow-md hover:shadow-xl"
-          >
-            <FontAwesomeIcon icon={faLinkedin} size="2x" />
-          </a>
-
-          <a
-            href="https://github.com/himanshudhillon09"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gray-900 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-gray-100 rounded-full shadow-md hover:shadow-xl"
-          >
-            <FontAwesomeIcon icon={faGithub} size="2x" />
-          </a>
-
-          <a
-            href="https://x.com/Himanshu0952"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-600 transition-all transform hover:scale-110 hover:rotate-6 p-3 bg-blue-100 rounded-full shadow-md hover:shadow-xl"
-          >
-            <FontAwesomeIcon icon={faTwitter} size="2x" />
-          </a>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl text-center font-light mt-4"
-        >
-          Hello,
-        </motion.h1>
-
-        <span className="text-3xl font-light text-center mt-4">
-          I&apos;m <span className="font-bold"> Himanshu Dhillon </span>
-        </span>
-        <div className="mt-4 p-4 max-w-6xl ml-14">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
+    <div className="min-h-screen bg-cyan-300">
+      <section id="about" className="pt-32 pb-16 px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-cursive mt-12"
+            className="relative inline-block mb-8"
           >
-            Professional Summary
-          </motion.h1>
-          <motion.p
+            <motion.div
+              className="relative"
+              initial={{ scale: 0 }}
+              animate={hasLoaded ? { scale: 1, rotate: 360 } : { scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              whileHover={{
+                scale: 1.05,
+                rotate: 5,
+                transition: { duration: 0.3 },
+              }}
+            >
+              <img
+                src={myPic.src}
+                alt="Himanshu Dhillon"
+                className="w-48 h-48 rounded-full object-cover border-4 border-sky-200 shadow-2xl"
+              />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400/20 to-yellow-400/20" />
+            </motion.div>
+          </motion.div>
+
+          {/* Greeting */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6"
+          >
+            <h1 className="text-5xl lg:text-6xl font-light text-gray-800 mb-2">
+              Hello,
+            </h1>
+            <p className="text-3xl lg:text-4xl font-light text-gray-700">
+              I'm{" "}
+              <span className="font-bold text-sky-600">Himanshu Dhillon</span>
+            </p>
+            <div className="mt-4 w-24 h-1 bg-gradient-to-r from-sky-500 to-yellow-400 mx-auto rounded-full" />
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            animate="animate"
+            className="flex flex-col sm:flex-row justify-center gap-4 mb-8"
+          >
+            <motion.button
+              variants={fadeInUp}
+              className="group flex items-center justify-center px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = "#contact"}
+            >
+              <Briefcase className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+              Hire Me!
+            </motion.button>
+
+            <motion.button
+              variants={fadeInUp}
+              className="group flex items-center justify-center px-8 py-4 bg-white text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-sky-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = "https://drive.google.com/file/d/1LQuM_5EAoBcXTAY1xZB73fX_YYuiXyWv/view?usp=drive_link"}
+            >
+              <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              Download CV
+            </motion.button>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            animate="animate"
+            className="flex justify-center gap-4 mb-16"
+          >
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInUp}
+                className={`${social.color} ${social.bg} p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <social.icon className="h-6 w-6" />
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Professional Summary */}
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-lg mt-6 font-sans"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-4xl mx-auto"
           >
-            Enthusiastic Full Stack Developer with 1 year of experience in
-            building responsive web applications using React and Node.js.
-            Skilled in developing efficient APIs and ensuring seamless user
-            experiences. Quick learner with a strong focus on delivering
-            high-quality solutions.
-          </motion.p>
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl p-8 lg:p-12 border border-sky-100">
+              <motion.h2
+                variants={fadeInLeft}
+                initial="initial"
+                animate="animate"
+                className="text-3xl lg:text-4xl font-light text-gray-800 mb-6 text-center"
+              >
+                Professional Summary
+              </motion.h2>
+              <motion.p
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+                transition={{ delay: 0.2 }}
+                className="text-lg lg:text-xl text-gray-600 leading-relaxed text-center"
+              >
+                Enthusiastic Full Stack Developer with 1 year of experience in
+                building responsive web applications using React and Node.js.
+                Skilled in developing efficient APIs and ensuring seamless user
+                experiences. Quick learner with a strong focus on delivering
+                high-quality solutions.
+              </motion.p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

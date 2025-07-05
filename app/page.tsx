@@ -1,4 +1,4 @@
-"use client"; // Ensures this file is client-side only
+"use client";
 
 import { motion } from "framer-motion";
 import Navbar from "./Sections/Navbar";
@@ -7,40 +7,37 @@ import ContactForm from "./Sections/ContactForm";
 import HeroSection from "./Sections/HeroSection";
 import Skills from "./Sections/Skills";
 import Projects from "./Sections/Projects";
+
 export default function Home() {
   return (
-    <div className="min-w-full">
-      {/* Hero Section  */}
-      <section className="flex flex-col items-center justify-center min-h-screen bg-teal-200">
-        <Navbar />
+    <div className="relative w-full">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative flex flex-col items-center justify-center min-h-screen bg-cyan-300">
         <HeroSection />
       </section>
 
       {/* Skills Section */}
-      <section
-        id="skills"
-        className="skills min-w-full min-h-screen p-12 bg-orange-100"
-      >
+      <section id="skills" className="relative min-h-screen p-12 from-slate-50">
         <Skills />
       </section>
 
       {/* Projects Section */}
       <section
         id="projects"
-        className="projects min-w-full min-h-screen p-12 bg-blue-400"
+        className="relative min-h-screen p-12 bg-slate-900"
       >
         <Projects />
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="experience min-w-full min-h-screen">
+      <section id="experience" className="relative min-h-screen">
         <Experience />
       </section>
+
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="contact min-h-screen bg-teal-100"
-      >
+      <section id="contact" className="relative min-h-screen bg-teal-100">
         <ContactForm />
       </section>
     </div>
