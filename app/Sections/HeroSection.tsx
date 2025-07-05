@@ -96,7 +96,7 @@ const HeroSection = () => {
               Hello,
             </h1>
             <p className="text-3xl lg:text-4xl font-light text-gray-200">
-              I'm{" "}
+              I&apos;m{" "}
               <span className="font-bold text-sky-600">Himanshu Dhillon</span>
             </p>
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-sky-500 to-yellow-400 mx-auto rounded-full" />
