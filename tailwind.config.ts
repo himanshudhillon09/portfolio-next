@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        cursive: ["Indie Flower", "cursive"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
