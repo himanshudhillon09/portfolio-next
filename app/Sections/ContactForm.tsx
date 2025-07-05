@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
   Send,
@@ -10,18 +10,40 @@ import {
   XCircle,
 } from "lucide-react";
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface StatusMessage {
+  type: "success" | "error";
+  text: string;
+}
+
+interface InputField {
+  name: keyof FormData;
+  label: string;
+  type: string;
+  icon: React.ElementType;
+  placeholder: string;
+  required: boolean;
+}
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(
+    null
+  );
 
-  // Animation variants
   const fadeInUp = {
     initial: { opacity: 0, y: 50 },
     animate: { opacity: 1, y: 0 },
@@ -36,12 +58,14 @@ const ContactForm = () => {
     },
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (loading) return;
@@ -77,14 +101,17 @@ const ContactForm = () => {
     } catch (error) {
       setStatusMessage({
         type: "error",
-        text: error.message || "An error occurred. Please try again.",
+        text:
+          error instanceof Error
+            ? error.message
+            : "An error occurred. Please try again.",
       });
     } finally {
       setLoading(false);
     }
   };
 
-  const inputFields = [
+  const inputFields: InputField[] = [
     {
       name: "name",
       label: "Full Name",
@@ -128,7 +155,7 @@ const ContactForm = () => {
             </span>
           </h2>
           <p className="text-gray-300 text-lg">
-            Have a question or want to work together? I&#39;d love to hear from
+            Have a question or want to work together? I&apos;d love to hear from
             you.
           </p>
         </motion.div>
