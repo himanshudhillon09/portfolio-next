@@ -5,7 +5,6 @@ import {
   MapPin,
   ChevronRight,
   Code,
-  Users,
   Rocket,
 } from "lucide-react";
 
