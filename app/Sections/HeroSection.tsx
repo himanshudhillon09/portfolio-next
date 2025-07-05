@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Briefcase, Download, Github, Linkedin, Twitter } from "lucide-react";
 import myPic from "../../public/mypic.jpg";
 import Image from "next/image";
 
 const HeroSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     setHasLoaded(true);
@@ -51,6 +52,34 @@ const HeroSection = () => {
       bg: "bg-blue-50 hover:bg-blue-100",
     },
   ];
+
+  const downloadResume = useCallback(async () => {
+    setIsDownloading(true);
+    try {
+      const response = await fetch("/api/download", { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to download: ${response.status} ${response.statusText}`
+        );
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "himanshu_dhillon_resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download error:", error);
+      alert("Sorry, something went wrong while downloading the resume.");
+    } finally {
+      setIsDownloading(false);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-indigo-900">
@@ -115,6 +144,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => (window.location.href = "#contact")}
+              aria-label="Hire Me"
             >
               <Briefcase className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Hire Me!
@@ -125,13 +155,13 @@ const HeroSection = () => {
               className="group flex items-center justify-center px-8 py-4 bg-white text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-sky-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                (window.location.href =
-                  "https://drive.google.com/file/d/1LQuM_5EAoBcXTAY1xZB73fX_YYuiXyWv/view?usp=drive_link")
-              }
+              onClick={downloadResume}
+              disabled={isDownloading}
+              aria-disabled={isDownloading}
+              aria-label="Download CV"
             >
               <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-              Download CV
+              {isDownloading ? "Downloading..." : "Download CV"}
             </motion.button>
           </motion.div>
 
@@ -152,6 +182,13 @@ const HeroSection = () => {
                 className={`${social.color} ${social.bg} p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
+                aria-label={`Visit my ${
+                  social.href.includes("linkedin")
+                    ? "LinkedIn"
+                    : social.href.includes("github")
+                    ? "GitHub"
+                    : "Twitter"
+                }`}
               >
                 <social.icon className="h-6 w-6" />
               </motion.a>

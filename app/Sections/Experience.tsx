@@ -14,50 +14,46 @@ export default function Experience() {
     {
       role: "Software Development Engineer",
       company: "Reticen8 Technologies",
-      duration: "Jan 2025 - Present",
+      duration: "Sep 2024 - Present",
       type: "Full-time",
       status: "current",
       description: [
-        "Developed full-stack applications using React and Node.js.",
-        "Implemented robust containerization strategies using Docker and Kubernetes.",
-        "Contributed to open-source projects to improve community libraries.",
-        "Collaborated with cross-functional teams to deploy scalable web applications.",
-        "Ensured continuous integration and delivery using CI/CD pipelines with GitLab and Jenkins.",
+        "Led frontend development of enterprise-grade Data Loss Prevention (DLP) system using React.js, TypeScript, and Material-UI, enhancing user experience and security for 1000+ active users.",
+        "Implemented secure authentication with JWT tokens, access/refresh token management, and Role-Based Access Control (RBAC) for fine-grained security.",
+        "Built interactive dashboards using Chart.js for data visualization, policy violation tracking, and threat intelligence with real-time updates.",
+        "Developed policy management interface using Material-UI Stepper component for complex DLP workflows, integrated REST APIs and ipify API for audit logging.",
+        "Collaborated with cross-functional teams to deliver scalable and secure frontend applications.",
       ],
-      skills: ["React", "Node.js", "Docker", "Kubernetes", "CI/CD"],
+      skills: [
+        "React.js",
+        "TypeScript",
+        "Material-UI",
+        "Chart.js",
+        "REST APIs",
+      ],
       icon: <Rocket className="w-5 h-5" />,
     },
     {
-      role: "Junior Software Engineer",
+      role: "Software Development Intern",
       company: "Reticen8 Technologies",
-      duration: "May 2024 - Sept 2024",
-      type: "Full-time",
-      status: "completed",
-      description: [
-        "Built scalable web applications with Next.js and Redis.",
-        "Integrated CI/CD pipelines using GitHub Actions to streamline deployments.",
-        "Developed browser extensions for Chrome and Firefox.",
-        "Improved application performance by optimizing server-side rendering (SSR) with Next.js.",
-        "Automated deployment processes using Docker for containerization.",
-      ],
-      skills: ["Next.js", "Redis", "GitHub Actions", "Docker", "SSR"],
-      icon: <Code className="w-5 h-5" />,
-    },
-    {
-      role: "SDE Intern",
-      company: "Reticen8 Technologies",
-      duration: "May 2024 - Sept 2024",
+      duration: "May 2024 - Aug 2024",
       type: "Internship",
       status: "completed",
       description: [
-        "Assisted in building scalable web applications with Next.js, React, and Redis.",
-        "Worked on containerizing applications using Docker for easier deployments.",
-        "Integrated CI/CD pipelines using GitHub Actions.",
-        "Developed features and optimized code to ensure high-quality performance and scalability.",
-        "Participated in code reviews and team meetings to improve code quality and maintainability.",
+        "Modernized legacy Flask application to high-performance Next.js application with server-side rendering (SSR) and SEO optimization, improving page load performance.",
+        "Implemented email automation using Nodemailer and Node.js, built responsive contact forms with real-time validation and error handling.",
+        "Designed file download system with server-side filtering and streaming, optimizing backend performance and reducing download latency by 50%.",
+        "Collaborated in Agile development with cross-functional teams, participated in code reviews, and delivered production-ready features using version control.",
       ],
-      skills: ["Next.js", "React", "Redis", "Docker", "GitHub Actions"],
-      icon: <Users className="w-5 h-5" />,
+      skills: [
+        "Next.js",
+        "TailwindCss",
+        "Node.js",
+        "Framer-motion",
+        "Nodemailer",
+        "Git",
+      ],
+      icon: <Code className="w-5 h-5" />,
     },
   ];
 
@@ -153,71 +149,61 @@ export default function Experience() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`relative flex items-center mb-16 ${
+              className={`relative flex items-center mb-14 ${
                 index % 2 === 0 ? "md:justify-start" : "md:justify-end"
               }`}
             >
-              {/* Timeline dot */}
-              <div
-                className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 rounded-full z-20 ${
-                  experience.status === "current"
-                    ? "bg-gradient-to-r from-green-400 to-blue-500 shadow-lg shadow-green-400/50"
-                    : "bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg shadow-blue-400/50"
-                }`}
-              >
-                <div className="absolute inset-0 rounded-full bg-white bg-opacity-20 animate-pulse"></div>
-              </div>
-
               <motion.div
                 variants={cardHoverVariants}
                 whileHover="hover"
-                className={`ml-12 md:ml-0 ${
-                  index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-                } md:w-1/2 bg-white/10 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl cursor-pointer group`}
+                className={`ml-0 md:ml-0 ${
+                  index % 2 === 0 ? "md:mr-10" : "md:ml-10"
+                } w-[95vw] md:w-[90%] max-w-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-2xl rounded-2xl p-4 md:p-6 border border-white/10 shadow-2xl cursor-pointer group transition-all duration-300 min-h-0`}
+                style={{ minHeight: 180, height: "auto" }}
               >
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white">
+                    <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white shadow-md">
                       {experience.icon}
                     </div>
                     <div>
-                      <h2 className="text-xl md:text-2xl font-bold text-white mb-1">
+                      <h2 className="text-lg md:text-xl font-bold text-white mb-0.5">
                         {experience.role}
                       </h2>
-                      <p className="text-blue-300 font-medium text-sm md:text-base">
+                      <p className="text-blue-300 font-medium text-xs md:text-sm">
                         {experience.company}
                       </p>
                     </div>
                   </div>
                   {experience.status === "current" && (
-                    <span className="px-3 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-medium rounded-full">
+                    <span className="px-2 py-0.5 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-semibold rounded-full shadow">
                       Current
                     </span>
                   )}
                 </div>
 
                 {/* Duration and Type */}
-                <div className="flex flex-wrap gap-4 mb-6">
+                <div className="flex flex-wrap gap-3 mb-2">
                   <div className="flex items-center gap-2 text-slate-300">
                     <Calendar className="w-4 h-4" />
-                    <span className="text-sm">{experience.duration}</span>
+                    <span className="text-xs">{experience.duration}</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-300">
                     <MapPin className="w-4 h-4" />
-                    <span className="text-sm">{experience.type}</span>
+                    <span className="text-xs">{experience.type}</span>
                   </div>
                 </div>
 
                 {/* Description */}
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-1 mb-2">
                   {experience.description.map((item, idx) => (
                     <motion.li
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-start gap-3 text-slate-200 text-sm md:text-base group-hover:text-white transition-colors"
+                      transition={{ delay: idx * 0.08 }}
+                      className="flex items-start gap-2 text-slate-200 text-xs md:text-sm group-hover:text-white transition-colors"
                     >
                       <ChevronRight className="w-4 h-4 mt-0.5 text-blue-400 flex-shrink-0" />
                       <span>{item}</span>
@@ -234,8 +220,8 @@ export default function Experience() {
                       initial="hidden"
                       whileInView="visible"
                       whileHover="hover"
-                      transition={{ delay: idx * 0.1 }}
-                      className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-slate-300 cursor-pointer"
+                      transition={{ delay: idx * 0.06 }}
+                      className="px-2 py-0.5 bg-white/10 border border-white/20 rounded-full text-xs font-semibold text-slate-300 cursor-pointer hover:bg-blue-500 hover:text-white transition-colors"
                     >
                       {skill}
                     </motion.span>

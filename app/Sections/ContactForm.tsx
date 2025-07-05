@@ -65,7 +65,7 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (loading) return;
@@ -91,21 +91,32 @@ const ContactForm = () => {
         throw new Error("Message cannot be empty.");
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(trimmedFormData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong.");
+      }
 
       setStatusMessage({
         type: "success",
-        text: "Your message has been sent successfully!",
+        text: "✅ Your message has been sent!",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      setStatusMessage({
-        type: "error",
-        text:
-          error instanceof Error
-            ? error.message
-            : "An error occurred. Please try again.",
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setStatusMessage({ type: "error", text: `❌ ${error.message}` });
+      } else {
+        setStatusMessage({
+          type: "error",
+          text: "❌ An unknown error occurred.",
+        });
+      }
     } finally {
       setLoading(false);
     }
