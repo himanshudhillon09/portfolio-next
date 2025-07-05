@@ -137,7 +137,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br bg-slate-900 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br bg-cyan-900 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,#1e40af_0%,transparent_50%)] opacity-20"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,#7c3aed_0%,transparent_50%)] opacity-20"></div>

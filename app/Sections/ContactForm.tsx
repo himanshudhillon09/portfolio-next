@@ -44,7 +44,6 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prevent multiple submissions
     if (loading) return;
 
     setLoading(true);
@@ -58,7 +57,6 @@ const ContactForm = () => {
         message: formData.message.trim(),
       };
 
-      // Basic client-side validation
       if (
         !trimmedFormData.senderEmail ||
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedFormData.senderEmail)
@@ -69,7 +67,6 @@ const ContactForm = () => {
         throw new Error("Message cannot be empty.");
       }
 
-      // Simulate API call for demo
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       setStatusMessage({
@@ -109,7 +106,7 @@ const ContactForm = () => {
       label: "Subject",
       type: "text",
       icon: Tag,
-      placeholder: "What's this about?",
+      placeholder: "What is this about?",
       required: false,
     },
   ];

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Briefcase, Download, Github, Linkedin, Twitter } from "lucide-react";
 import myPic from "../../public/mypic.jpg";
+import Image from "next/image";
 
 const HeroSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -52,7 +53,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-cyan-300">
+    <div className="min-h-screen bg-indigo-900">
       <section id="about" className="pt-32 pb-16 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
           {/* Profile Image */}
@@ -73,9 +74,11 @@ const HeroSection = () => {
                 transition: { duration: 0.3 },
               }}
             >
-              <img
-                src={myPic.src}
+              <Image
+                src={myPic}
                 alt="Himanshu Dhillon"
+                height={192}
+                width={192}
                 className="w-48 h-48 rounded-full object-cover border-4 border-sky-200 shadow-2xl"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400/20 to-yellow-400/20" />
@@ -111,7 +114,7 @@ const HeroSection = () => {
               className="group flex items-center justify-center px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = "#contact"}
+              onClick={() => (window.location.href = "#contact")}
             >
               <Briefcase className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Hire Me!
@@ -122,7 +125,10 @@ const HeroSection = () => {
               className="group flex items-center justify-center px-8 py-4 bg-white text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-sky-300 hover:bg-yellow-50 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = "https://drive.google.com/file/d/1LQuM_5EAoBcXTAY1xZB73fX_YYuiXyWv/view?usp=drive_link"}
+              onClick={() =>
+                (window.location.href =
+                  "https://drive.google.com/file/d/1LQuM_5EAoBcXTAY1xZB73fX_YYuiXyWv/view?usp=drive_link")
+              }
             >
               <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               Download CV

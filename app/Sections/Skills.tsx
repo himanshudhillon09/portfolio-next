@@ -2,9 +2,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
 
-  // Skills data with proficiency levels
   const skills = [
     {
       name: "JavaScript",
@@ -50,7 +49,6 @@ const Skills = () => {
     },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -89,7 +87,7 @@ const Skills = () => {
 
   const progressBarVariants = {
     hidden: { width: 0 },
-    visible: (level) => ({
+    visible: (level: number) => ({
       width: `${level}%`,
       transition: {
         duration: 1.2,
@@ -100,9 +98,8 @@ const Skills = () => {
   };
 
   return (
-    <div className="min-h-screen slate-50 py-16 px-4">
+    <div className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Title Section */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -110,7 +107,7 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h2 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Skills & Expertise
+            Skills &amp; Expertise
           </h2>
           <p className="text-gray-600 text-xl">
             Crafting digital experiences with modern technologies
@@ -123,7 +120,6 @@ const Skills = () => {
           />
         </motion.div>
 
-        {/* Skills Grid */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -141,7 +137,7 @@ const Skills = () => {
               }}
               onHoverStart={() => setHoveredSkill(index)}
               onHoverEnd={() => setHoveredSkill(null)}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-300"
+              className="cursor-pointer bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -169,7 +165,6 @@ const Skills = () => {
                 </motion.span>
               </div>
 
-              {/* Progress Bar Container */}
               <div className="relative">
                 <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                   <motion.div
@@ -177,13 +172,10 @@ const Skills = () => {
                     animate="visible"
                     variants={progressBarVariants}
                     custom={skill.level}
-                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
+                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative cursor-pointer`}
                   >
-                    {/* Animated shine effect */}
                     <motion.div
-                      animate={{
-                        x: [-100, 400],
-                      }}
+                      animate={{ x: [-100, 400] }}
                       transition={{
                         repeat: Infinity,
                         duration: 2,
@@ -195,7 +187,6 @@ const Skills = () => {
                   </motion.div>
                 </div>
 
-                {/* Floating particles on hover */}
                 {hoveredSkill === index && (
                   <div className="absolute inset-0 pointer-events-none">
                     {[...Array(5)].map((_, i) => (
@@ -224,7 +215,6 @@ const Skills = () => {
                 )}
               </div>
 
-              {/* Skill level indicator */}
               <div className="flex justify-between mt-2 text-xs text-gray-500">
                 <span>Beginner</span>
                 <span>Intermediate</span>
@@ -234,7 +224,6 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -245,11 +234,11 @@ const Skills = () => {
             { label: "Years Experience", value: "1+", icon: "🚀" },
             { label: "Projects Completed", value: "10+", icon: "💼" },
             { label: "Technologies", value: "7+", icon: "⚡" },
-          ].map((stat, index) => (
+          ].map((stat) => (
             <motion.div
               key={stat.label}
               whileHover={{ scale: 1.05 }}
-              className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20"
+              className="cursor-pointer text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20"
             >
               <div className="text-3xl mb-2">{stat.icon}</div>
               <div className="text-2xl font-bold text-gray-800">
