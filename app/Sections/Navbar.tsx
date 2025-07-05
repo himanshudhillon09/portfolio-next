@@ -29,7 +29,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleNavClick = (section) => {
+  const handleNavClick = (section: string) => {
     setActiveSection(section);
     setIsOpen(false);
   };

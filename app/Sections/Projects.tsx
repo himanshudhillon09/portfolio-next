@@ -123,7 +123,7 @@ const Projects = () => {
     },
   };
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "Live":
         return "bg-green-500";
@@ -295,7 +295,9 @@ const Projects = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={()=>window.location.href = "https://github.com/himanshudhillon09"}
+            onClick={() =>
+              (window.location.href = "https://github.com/himanshudhillon09")
+            }
             className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all"
           >
             View All Projects on GitHub
