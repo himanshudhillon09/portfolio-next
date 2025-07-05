@@ -95,7 +95,7 @@ const HeroSection = () => {
             <h1 className="text-5xl lg:text-6xl font-light text-gray-800 mb-2">
               Hello,
             </h1>
-            <p className="text-3xl lg:text-4xl font-light text-gray-700">
+            <p className="text-3xl lg:text-4xl font-light text-gray-200">
               I'm{" "}
               <span className="font-bold text-sky-600">Himanshu Dhillon</span>
             </p>
